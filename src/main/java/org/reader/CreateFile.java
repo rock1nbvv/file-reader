@@ -1,4 +1,4 @@
-package org.executor;
+package org.reader;
 
 import lombok.SneakyThrows;
 
@@ -16,7 +16,8 @@ public class CreateFile {
         long factorial = 1L;
         List<Long> numbers = new ArrayList<>();
 
-        for (long i = 2; i < 100L; i++) {
+//        for (long i = 2; i < 9223372036854775807L; i++) {
+        for (long i = 2; i < 9223372L; i++) {
             factorial += i;
             numbers.add(factorial);
         }
@@ -25,10 +26,11 @@ public class CreateFile {
                 .map(Object::toString)
                 .collect(Collectors.joining(","));
 
-        Path outputFilePath = Files.createFile(Path.of("src/test/resources/fileToCreate.csv"));
+        Path workDirectory = Path.of("src/main/resources/");
+        Path filePath = workDirectory.resolve("test_data.csv");
 
         Files.writeString(
-                outputFilePath,
+                filePath,
                 collected,
                 StandardOpenOption.WRITE,
                 StandardOpenOption.TRUNCATE_EXISTING,
