@@ -16,7 +16,7 @@ import java.util.Set;
 public class ChannelReader {
 
     @SneakyThrows
-    public static void readFile(Path workDirectory, Path filePath) {
+    public static void splitFile(Path workDirectory, Path filePath) {
         CharsetDecoder charsetDecoder = StandardCharsets.UTF_8.newDecoder();
         ByteBuffer byteBuffer = ByteBuffer.allocate(128);
         Set<StandardOpenOption> options = new HashSet<>();
@@ -24,7 +24,7 @@ public class ChannelReader {
         options.add(StandardOpenOption.APPEND);
 
         try (SeekableByteChannel seekableByteChannel = Files.newByteChannel(filePath)) {
-            ByteBuffer partialToken = ByteBuffer.allocate(128);
+            ByteBuffer partialToken = ByteBuffer.allocate(32);
             int read = 0;
             int partialTokenRead = 0;
             int chunkCount = 0;
