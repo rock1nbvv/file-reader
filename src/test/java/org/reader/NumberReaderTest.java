@@ -54,7 +54,6 @@ public class NumberReaderTest {
         while (numberReader.hasNext()) {
             Long next = numberReader.next();
             numbers.add(next);
-            System.out.println(next);
         }
 
         Assertions.assertThat(numbers).isEqualTo(
@@ -68,11 +67,6 @@ public class NumberReaderTest {
         numberReader = new NumberReader(testData.seekableByteChannel);
 
         Assertions.assertThat(numberReader.hasNext()).isEqualTo(true);
-    }
-
-    @Test
-    @Disabled
-    public void hasNextElementInFile() {
     }
 
     @Test

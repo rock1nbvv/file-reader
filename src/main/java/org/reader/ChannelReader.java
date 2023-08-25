@@ -50,14 +50,12 @@ public class ChannelReader {
                         }
                         partialToken.rewind();
                         System.out.println(charsetDecoder.decode(partialToken.slice(0, partialTokenRead)));
-//                        fileChannel.write(partialToken.slice(0, partialTokenRead));
                         chunkWriteSize++;
                         partialTokenRead = 0;
                         partialToken.rewind();
                     }
                     if ((i == read - 1) && byteBuffer.limit() < byteBuffer.capacity()) {
                         System.out.println(charsetDecoder.decode(partialToken.slice(0, partialTokenRead)));
-//                        fileChannel.write(partialToken.slice(0, partialTokenRead));
                     }
                 }
             }
