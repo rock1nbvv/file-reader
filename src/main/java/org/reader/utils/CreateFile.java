@@ -1,4 +1,4 @@
-package org.reader;
+package org.reader.utils;
 
 import lombok.SneakyThrows;
 

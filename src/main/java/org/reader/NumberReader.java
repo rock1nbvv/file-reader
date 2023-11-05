@@ -1,5 +1,9 @@
 package org.reader;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.SneakyThrows;
 
 import java.io.Closeable;
@@ -9,6 +13,7 @@ import java.nio.charset.CharsetDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 
 public class NumberReader implements Closeable, Iterator<Long> {
     /**
@@ -42,7 +47,10 @@ public class NumberReader implements Closeable, Iterator<Long> {
 
 
     private final CharsetDecoder charsetDecoder = StandardCharsets.UTF_8.newDecoder();
-    private final SeekableByteChannel seekableByteChannel;
+
+    @Setter
+    @Getter
+    public SeekableByteChannel seekableByteChannel;
 
     public NumberReader(SeekableByteChannel seekableByteChannel) {
         this.seekableByteChannel = seekableByteChannel;
@@ -54,9 +62,6 @@ public class NumberReader implements Closeable, Iterator<Long> {
      *
      * @return The next element when called.
      * @throws NoSuchElementException if internal {@link #hasNextElement} check returned false.
-     *
-     *                                <br><br>TEMP
-     *                                return next only if reached "," or if 'read ==-1' & buffer has reached the last element
      */
     @SneakyThrows
     public Long next() {
@@ -122,10 +127,10 @@ public class NumberReader implements Closeable, Iterator<Long> {
             return hasNextElement = true;
         } else if (nextPosition == nextByteBuffer.limit() && (nextRead = seekableByteChannel.read(nextByteBuffer)) != -1) { //if we are at the end of buffer but not the end of the channel - read more elements and return true
             nextByteBuffer.flip();
-                read = nextRead;
-                byteBuffer = nextByteBuffer;
-                bufferPosition = 0;
-                return hasNextElement = true;
+            read = nextRead;
+            byteBuffer = nextByteBuffer;
+            bufferPosition = 0;
+            return hasNextElement = true;
         }
         return hasNextElement = false;
     }

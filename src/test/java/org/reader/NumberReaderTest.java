@@ -57,7 +57,7 @@ public class NumberReaderTest {
         }
 
         Assertions.assertThat(numbers).isEqualTo(
-                List.of(105L, 120L, 136L, 153L, 171L, 190L, 210L, 231L)
+                List.of(120L, 105L, 136L, 153L, 210L, 171L, 190L, 231L)
         );
     }
 

@@ -31,3 +31,4 @@ same time we don't want to keep the whole parsed file in memory.
 
 ### References
 * [Java Object Size: Estimating, Measuring, and Verifying via Profiling](https://dzone.com/articles/java-object-size-estimation-measuring-verifying)
+* [External sorting](https://www.geeksforgeeks.org/sorting-larger-file-with-smaller-ram/)
