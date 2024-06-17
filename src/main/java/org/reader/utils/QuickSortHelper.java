@@ -1,6 +1,6 @@
 package org.reader.utils;
 
-public class SortHelper {
+public class QuickSortHelper {
 
     private static void swap(Long[] arr, int i, int j) {
         Long temp = arr[i];

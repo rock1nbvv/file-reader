@@ -43,7 +43,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.reader.App</mainClass>
+                            <mainClass>org.reader.FileReader</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

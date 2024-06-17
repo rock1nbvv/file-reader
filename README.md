@@ -14,7 +14,7 @@
 
 ### Problem
 
-When we need to parse non-primitive to read file containing non-primitive types Scanner is not a solution and at the
+When we need to parse file containing non-primitive types and at the
 same time we don't want to keep the whole parsed file in memory.
 
 ### Goal
@@ -25,10 +25,11 @@ same time we don't want to keep the whole parsed file in memory.
 
 ### Prep
 
-* Using `CreateFile` generate .csv with sequence of numbers the size of 131810190 bytes
-* `scannerMethod` used as benchmark requires `-Xmx2050k` to work
-
+* Using `GenerateLargeTxt` generate .txt with sequence of longs of predefined size
+* `FileSplitter` reads initial file and splits it into chunks
+* `ChunkReader` merges chunks calling `SortingHelper`
 
 ### References
+
 * [Java Object Size: Estimating, Measuring, and Verifying via Profiling](https://dzone.com/articles/java-object-size-estimation-measuring-verifying)
 * [External sorting](https://www.geeksforgeeks.org/sorting-larger-file-with-smaller-ram/)
